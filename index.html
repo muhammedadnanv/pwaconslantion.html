@@ -107,11 +107,13 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p>The fee for your PWA consultation is ₹399. Do you want to proceed with the payment?</p>
+          <p>The fee for your PWA consultation is ₹399. Please make the payment via UPI to the following UPI ID:</p>
+          <strong>adnanmuhammad4393@okicici</strong>
+          <p>After making the payment, please confirm by sending your payment details (screenshot or transaction ID).</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary" onclick="proceedToPayment();">Proceed to Payment</button>
+          <button type="button" class="btn btn-primary" onclick="submitFormData();">Confirm Payment & Submit</button>
         </div>
       </div>
     </div>
@@ -119,7 +121,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    function proceedToPayment() {
+    function submitFormData() {
+      // Collect form data
       var name = document.getElementById('name').value;
       var address = document.getElementById('address').value;
       var currentRole = document.getElementById('currentRole').value;
@@ -127,14 +130,21 @@
       var email = document.getElementById('email').value;
       var linkedin = document.getElementById('linkedin').value;
 
-      // Create a formatted WhatsApp message
-      var whatsappMessage = `*Consultation Booking*\n\nName: ${name}\nAddress: ${address}\nCurrent Role: ${currentRole}\nPhone: ${phone}\nEmail: ${email}\nLinkedIn: ${linkedin}\nFee: ₹399\n\nPlease make your payment to the following UPI ID:\n\nUPI ID: adnanmuhammad4393@okicici`;
+      // Show success message
+      alert("Thank you for booking your PWA consultation. Please send your payment confirmation details (transaction ID or screenshot) to confirm the booking.");
 
-      // Redirect to WhatsApp with the message
-      var whatsappLink = `https://wa.me/9656778508?text=${encodeURIComponent(whatsappMessage)}`;
-      window.location.href = whatsappLink;
+      // You can log the form data for verification purposes
+      console.log({
+        name: name,
+        address: address,
+        currentRole: currentRole,
+        phone: phone,
+        email: email,
+        linkedin: linkedin
+      });
+
+      // You can add AJAX here to send the form data to your backend for further processing
     }
   </script>
-
 </body>
 </html>
